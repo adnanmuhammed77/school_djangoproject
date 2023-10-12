@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<style>
+    body{
+    background-image:url('static/img/img2.jpg');
+    background-size: cover;
+    
+}
+
+</style>
+<body>
+    <div class="button">
+        {% if user.is_authenticated %}
+        <a class="btn" href="logout"> Logout</a>
+        {% else %}
+    <a class="btn" href="{% url 'login' %}"> login</a>
+
+    <a class="btn1" href="{% url 'register' %}"> Register</a>
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+

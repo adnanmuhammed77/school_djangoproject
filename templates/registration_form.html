@@ -1,0 +1,238 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+
+<script>
+  // JavaScript function to populate the course dropdown based on the selected department
+  function populateCourses() {
+      var department = document.getElementById("department").value;
+      var courseSelect = document.getElementById("course");
+
+      // Clear the existing options
+      courseSelect.innerHTML = "";
+
+      if (department === "Commerce") {
+          var commerceCourses = ["BBA", "BCom"];
+          for (var i = 0; i < commerceCourses.length; i++) {
+              var option = document.createElement("option");
+              option.text = commerceCourses[i];
+              courseSelect.add(option);
+          }
+      }
+
+      if (department === "Cs") {
+          var commerceCourses = ["BCA", "MCA"];
+          for (var i = 0; i < commerceCourses.length; i++) {
+              var option = document.createElement("option");
+              option.text = commerceCourses[i];
+              courseSelect.add(option);
+          }
+      }
+
+      if (department === "physics") {
+          var commerceCourses = ["bsc physics", "Msc physics"];
+          for (var i = 0; i < commerceCourses.length; i++) {
+              var option = document.createElement("option");
+              option.text = commerceCourses[i];
+              courseSelect.add(option);
+          }
+      }
+
+      if (department === "chemistry") {
+          var commerceCourses = ["Bsc Chemistry", "Msc chemistry"];
+          for (var i = 0; i < commerceCourses.length; i++) {
+              var option = document.createElement("option");
+              option.text = commerceCourses[i];
+              courseSelect.add(option);
+          }
+      }
+
+      if (department === "mathematics") {
+          var commerceCourses = ["Bsc maths", "Msc maths"];
+          for (var i = 0; i < commerceCourses.length; i++) {
+              var option = document.createElement("option");
+              option.text = commerceCourses[i];
+              courseSelect.add(option);
+          }
+      }
+
+      // Add similar blocks of code for other departments
+  }
+</script>
+
+<section class="h-100 bg-light">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card card-registration my-4">
+            <div class="row g-0">
+              <div class="col-xl-6 d-none d-xl-block">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                  alt="Sample photo" class="img-fluid"
+                  style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+              </div>
+              <div class="col-xl-6">
+                <div class="card-body p-md-5 text-black">
+                  <h3 class="mb-5 text-uppercase">Student registration form</h3>
+                  <form method="post" action="" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <input type="text" name="name" id="form3Example1m" class="form-control form-control-lg" required />
+                        <label class="form-label" for="form3Example1m">Name</label>
+                        <div class="invalid-feedback">
+                           Name is required
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <input type="text" name="dob" id="form3Example1n" class="form-control form-control-lg" required />
+                        <label class="form-label" for="form3Example1n">DOB</label>
+                        <div class="invalid-feedback">
+                          DOB is required
+                       </div>
+                      </div>
+                    </div>
+                  </div>
+                
+  
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <input type="number" name="age" id="form3Example1m1" class="form-control form-control-lg" required />
+                        <label class="form-label" for="form3Example1m1">Age</label>
+                        <div class="invalid-feedback">
+                          Age is required
+                       </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <input type="text" name="number" id="form3Example1n1" class="form-control form-control-lg" required />
+                        <label class="form-label" for="form3Example1n1">Phone No</label>
+                        <div class="invalid-feedback">
+                          Phone No is required
+                       </div>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <input type="text" name="address" id="form3Example8" class="form-control form-control-lg" required />
+                    <label class="form-label" for="form3Example8">Address</label>
+                    <div class="invalid-feedback">
+                      Address is required
+                   </div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="text" name="email" id="form3Example97" class="form-control form-control-lg" required />
+                    <label class="form-label" for="form3Example97">Email ID</label>
+                    <div class="invalid-feedback">
+                      Email ID is required
+                   </div>
+                  </div>
+  
+                  <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+  
+                    <h6 class="mb-0 me-4">Gender: </h6>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  >
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        male
+                      </label>
+                    </div>
+                    <div class="form-check" style="margin-left: 10px;">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+                      <label class="form-check-label" for="flexRadioDefault2" >
+                        female
+                      </label>
+                    </div>
+  
+                    
+  
+                  </div>
+  
+                  <div class="row">
+                    
+                    <label for="department">Department:</label>
+                    <select id="department" onchange="populateCourses()">
+                        <option value="">Select Department</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Cs">Computer science</option>
+                        <option value="physics">Physics</option>
+                        <option value="chemistry">Chemistry</option>
+                        <option value="mathematics">Mathematics</option>
+                       
+                        <!-- Add more department options here -->
+                    </select>
+                    
+                    <label for="course">Course:</label>
+                    <select id="course">
+                        <option value="">Select Course</option>
+                        
+                    </select>
+            
+                    <br>
+                    
+                    <label for="purpose">Purpose:</label>
+                    <select id="purpose">
+                        <option value="">Select Purpose</option>
+                        <option value="Enquiry">For Enquiry</option>
+                        <option value="Order">Admission</option>
+                        <option value="Return">Return</option>
+                    </select>
+            
+                    <br>
+                    
+            
+                    <label>Materials Provide:</label><br>
+                    <input type="checkbox" id="notebook" name="materials" value="Debit Note Book">
+                    <label for="notebook">Debit Note Book</label><br>
+                    <input type="checkbox" id="pen" name="materials" value="Pen">
+                    <label for="pen">Pen</label><br>
+                    <input type="checkbox" id="exam-papers" name="materials" value="Exam Papers">
+                    <label for="exam-papers">Exam Papers</label><br>
+                    
+                    <br>
+                    
+                  </div>
+ 
+                    <button type="submit" class="btn btn-warning btn-lg ms-2">Submit form</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+  </script>
+{% endblock %}
